@@ -7,7 +7,7 @@ dev:sswraj@
 EOT
 echo -e "INSTALLATION BEGINS NOW \n"
 sudo cp logstash.repo /etc/yum.repos.d/
-home=../log-files
+home=/var/log
 rm -f GPG-KEY-elasticsearch* #removing the old key files
 if [ ! -d "$home/log" ]; then #Creating the log folder for the first time
         mkdir -p log
