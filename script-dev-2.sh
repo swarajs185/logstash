@@ -7,7 +7,7 @@ dev:sswraj@
 EOT
 echo -e "INSTALLATION BEGINS NOW \n"
 sudo cp logstash.repo /etc/yum.repos.d/
-home=.
+home=../log-files
 rm -f GPG-KEY-elasticsearch* #removing the old key files
 if [ ! -d "$home/log" ]; then #Creating the log folder for the first time
         mkdir -p log
@@ -71,7 +71,7 @@ case $version in
         echo "[SUCCESS]Installation Complete.. Please create a pipeline on '/etc/logstash/logstash.conf' and run 'sudo /usr/share/logstash/bin/logstash -f /etc/logstash/logstash.conf'"
         ;;
         2) echo "Installing Logstash 7.16.3 vesion with Opensearch plugin"
-        echo "Installing the 7.16.3 version for Opensearch"
+        echo "downloading the files..."
         sudo rpm -ivh logstash-oss-7.16.3-x86_64.rpm >> $logfile 2>>$errorfile
         echo "Installing the logstash-output-opensearch plugin"
         sudo /usr/share/logstash/bin/logstash-plugin  install --preserve logstash-output-opensearch >>$logfile 2>$errorfile
