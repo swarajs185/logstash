@@ -78,6 +78,6 @@ case $version in
         echo "Installation Successful"
         ;;
         *) echo default
-        echo "Not Found will be updating the script soon"
+        echo "Not Found will be updating the script soon..."
         ;;
 esac
