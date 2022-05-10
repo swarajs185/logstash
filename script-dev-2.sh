@@ -10,10 +10,10 @@ sudo cp logstash.repo /etc/yum.repos.d/
 home=/var/log
 rm -f GPG-KEY-elasticsearch* #removing the old key files
 if [ ! -d "$home/applog" ]; then #Creating the log folder for the first time
-        mkdir -p /var/log/applog
+        sudo mkdir -p /var/log/applog
 fi
 if [ ! -d "$home/apperror" ]; then #creating the error folder for the first name
-        mkdir -p /var/log/apperror
+        sudo mkdir -p /var/log/apperror
 fi
 date_log=`date  | cut -d " " -f 4 | sed -e "s/:/_/g"`
 logfile=$home/applog/logfile_$date_log.log
