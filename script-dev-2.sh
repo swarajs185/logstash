@@ -72,9 +72,9 @@ case $version in
         ;;
         2) echo "Installing Logstash 7.16.3 vesion with Opensearch plugin"
         echo "downloading the files..."
-        sudo rpm -ivh logstash-oss-7.16.3-x86_64.rpm >> $logfile 2>>$errorfile
+        sudo rpm -ivh logstash-oss-7.16.3-x86_64.rpm -y >> $logfile 2>>$errorfile
         echo "Installing the logstash-output-opensearch plugin"
-        sudo /usr/share/logstash/bin/logstash-plugin  install --preserve logstash-output-opensearch >>$logfile 2>$errorfile
+        sudo /usr/share/logstash/bin/logstash-plugin  install --preserve logstash-output-opensearch >>$logfile 2>>$errorfile
         echo "Installation Successful"
         ;;
         *) echo default
