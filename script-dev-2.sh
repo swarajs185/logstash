@@ -18,11 +18,11 @@ fi
 date_log=`date  | cut -d " " -f 4 | sed -e "s/:/_/g"`
 logfile=$home/applog/logfile_$date_log.log
 errorfile=$home/apperror/errorfile_$date_log.log
-chmod 777 $logfile
-chmod 777 $errorfile
 #echo $logfile
 #echo $errorfile
 repository=/etc/yum.repos.d/logstash.repo
+sudo chmod 777 $logfile
+sudo chmod 777 $errorfile
 echo "Log file: $logfile"
 echo -e "Error file: $errorfile \n "
 if [ -d "/usr/lib/java" ]; then
