@@ -9,15 +9,15 @@ echo -e "INSTALLATION BEGINS NOW \n"
 sudo cp logstash.repo /etc/yum.repos.d/
 home=/var/log
 rm -f GPG-KEY-elasticsearch* #removing the old key files
-if [ ! -d "$home/app-log" ]; then #Creating the log folder for the first time
-        mkdir -p log
+if [ ! -d "$home/applog" ]; then #Creating the log folder for the first time
+        mkdir -p applog
 fi
-if [ ! -d "$home/app-error" ]; then #creating the error folder for the first name
-        mkdir -p error
+if [ ! -d "$home/apperror" ]; then #creating the error folder for the first name
+        mkdir -p apperror
 fi
 date_log=`date  | cut -d " " -f 4 | sed -e "s/:/_/g"`
-logfile=$home/log/logfile_$date_log.log
-errorfile=$home/error/errorfile_$date_log.log
+logfile=$home/applog/logfile_$date_log.log
+errorfile=$home/apperror/errorfile_$date_log.log
 #echo $logfile
 #echo $errorfile
 repository=/etc/yum.repos.d/logstash.repo
