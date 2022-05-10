@@ -7,13 +7,13 @@ dev:sswraj@
 EOT
 echo -e "INSTALLATION BEGINS NOW \n"
 sudo cp logstash.repo /etc/yum.repos.d/
-home=/var/log
+home=/home/ec2-user/logs
 rm -f GPG-KEY-elasticsearch* #removing the old key files
 if [ ! -d "$home/applog" ]; then #Creating the log folder for the first time
-        sudo mkdir -p /var/log/applog
+        sudo mkdir -p $home/applog
 fi
 if [ ! -d "$home/apperror" ]; then #creating the error folder for the first name
-        sudo mkdir -p /var/log/apperror
+        sudo mkdir -p $home/apperror
 fi
 date_log=`date  | cut -d " " -f 4 | sed -e "s/:/_/g"`
 logfile=$home/applog/logfile_$date_log.log
