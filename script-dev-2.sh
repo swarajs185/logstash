@@ -75,8 +75,13 @@ case $version in
         if [ -d "/etc/logstash" ]; then
         echo "[WARN]Logstash is already configured!!!.. Checking the version"
         echo "Version:" `/usr/share/logstash/bin/logstash --version`
-        echo "Exiting the process"
+        echo "Would you like to upgrade to 7.16.3? [yes/no]"
+        read option
+        if $option = 'yes' 
+        then
+        echo "Installing Latest Version"
         exit 1
+        fi
         fi
         echo "No Previous Version found.. Installing the 7.16.3"
         sudo rpm -ivh logstash-oss-7.16.3-x86_64.rpm -y >>$logfile 2>>$errorfile
