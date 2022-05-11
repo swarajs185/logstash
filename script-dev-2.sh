@@ -73,13 +73,22 @@ case $version in
         2) echo "Trying to install 7.1"
         echo "Checking the previous versions on the EC2 instance"
         if [ -d "/etc/logstash" ]; then
-        echo "[WARN]Logstash is already configured!!!.. Checking the version"
+        echo "[WARN]Logstash is already configured!!!.. Checking the version \n"
         echo "Version:" `/usr/share/logstash/bin/logstash --version`
-        echo "Would you like to upgrade to 7.16.3? [yes/no]"
+        echo "Would you like to upgrade to 7.16.3? [yes/no] \n"
         read option
         if [ $option = "yes" ] 
         then
-        echo "Installing Latest Version"
+        echo "Installing the 7.16.3 version..."
+        sudo rm -rf /etc/logstash >>$logfile 2>>$errorfile
+        sudo rm -rf /usr/share/logstash >>$logfile 2>>$errorfile
+        echo "Deletion of 6.8.3 completed, installing the new one"
+        sudo rpm -ivh logstash-oss-7.16.3-x86_64.rpm -y >>$logfile 2>>$errorfile
+        echo "Installing the logstash-output-opensearch plugin"
+        sudo /usr/share/logstash/bin/logstash-plugin  install --preserve logstash-output-opensearch >>$logfile 2>>$errorfile
+        echo "Installation Successful"
+        else
+        echo "No action required from the script.. exiting.."
         exit 1
         fi
         fi
