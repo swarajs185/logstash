@@ -82,6 +82,8 @@ case $version in
         then
         echo "Installing the 7.16.3 version..."
         sudo yum remove logstash -y >>$logfile 2>>$errorfile
+        sudo rm -rf /etc/logstash
+        sudo rm -rf /usr/share/logstash
         echo "Deletion of 6.8.3 completed, installing the new one"
         sudo wget https://artifacts.elastic.co/downloads/logstash/logstash-oss-7.16.3-x86_64.rpm >>$logfile 2>>$errorfile
         sudo rpm -ivh logstash-oss-7.16.3-x86_64.rpm -y >>$logfile 2>>$errorfile
@@ -95,6 +97,7 @@ case $version in
         exit 1
         fi
         echo "No Previous Version found.. Installing the 7.16.3"
+        sudo wget https://artifacts.elastic.co/downloads/logstash/logstash-oss-7.16.3-x86_64.rpm >>$logfile 2>>$errorfile
         sudo rpm -ivh logstash-oss-7.16.3-x86_64.rpm -y >>$logfile 2>>$errorfile
         echo "Installing the logstash-output-opensearch plugin"
         sudo /usr/share/logstash/bin/logstash-plugin  install --preserve logstash-output-opensearch >>$logfile 2>>$errorfile
