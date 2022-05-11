@@ -74,8 +74,7 @@ case $version in
         echo "Checking the previous versions on the EC2 instance"
         if [ -d "/etc/logstash" ]; then
         echo "[WARN]Logstash is already configured!!!.. Checking the version"
-        echo "Version: \n"
-        /usr/share/logstash/bin/logstash --version
+        echo "Version:" /usr/share/logstash/bin/logstash --version
         echo "Exiting the process"
         exit 1
         fi
