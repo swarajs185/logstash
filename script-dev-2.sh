@@ -70,8 +70,16 @@ case $version in
         sudo /usr/share/logstash/bin/logstash-plugin install logstash-output-amazon_es >>$logfile 2>>$errorfile
         echo "[SUCCESS]Installation Complete.. Please create a pipeline on '/etc/logstash/logstash.conf' and run 'sudo /usr/share/logstash/bin/logstash -f /etc/logstash/logstash.conf'"
         ;;
-        2) echo "Installing Logstash 7.16.3 vesion with Opensearch plugin"
-        echo "downloading the files..."
+        2) echo "Trying to install 7.1"
+        echo "Checking the previous versions on the EC2 instance"
+        if [ -d "/etc/logstash" ]; then
+        echo "[WARN]Logstash is already configured!!!.. Checking the version"
+        echo "Version: \n"
+        /usr/share/logstash/bin/logstash --version
+        echo "Exiting the process"
+        exit 1
+        fi
+        echo "No Previous Version found.. Installing the 7.16.3"
         sudo rpm -ivh logstash-oss-7.16.3-x86_64.rpm -y >>$logfile 2>>$errorfile
         echo "Installing the logstash-output-opensearch plugin"
         sudo /usr/share/logstash/bin/logstash-plugin  install --preserve logstash-output-opensearch >>$logfile 2>>$errorfile
