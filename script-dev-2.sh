@@ -77,7 +77,7 @@ case $version in
         echo "Version:" `/usr/share/logstash/bin/logstash --version`
         echo "Would you like to upgrade to 7.16.3? [yes/no]"
         read option
-        if $option = 'yes' 
+        if [ $option = "yes" ] 
         then
         echo "Installing Latest Version"
         exit 1
