@@ -61,6 +61,7 @@ case $version in
         fi
         if [ -d "/etc/logstash" ]; then
         echo "[WARN]Logstash is already configured!!!.. Please create pipeline under /etc/logstash/logstash.conf"
+        echo "Version:" `/usr/share/logstash/bin/logstash --version`
         exit 1
         fi
         echo -e "[INFO]Installing Logstash \n "
@@ -80,8 +81,7 @@ case $version in
         if [ $option = "yes" ] 
         then
         echo "Installing the 7.16.3 version..."
-        sudo rm -rf /etc/logstash >>$logfile 2>>$errorfile
-        sudo rm -rf /usr/share/logstash >>$logfile 2>>$errorfile
+        sudo yum remove logstash -y >>$logfile 2>>$errorfile
         echo "Deletion of 6.8.3 completed, installing the new one"
         sudo rpm -ivh logstash-oss-7.16.3-x86_64.rpm -y >>$logfile 2>>$errorfile
         echo "Installing the logstash-output-opensearch plugin"
