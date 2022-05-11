@@ -71,7 +71,7 @@ case $version in
         sudo /usr/share/logstash/bin/logstash-plugin install logstash-output-amazon_es >>$logfile 2>>$errorfile
         echo "[SUCCESS]Installation Complete.. Please create a pipeline on '/etc/logstash/logstash.conf' and run 'sudo /usr/share/logstash/bin/logstash -f /etc/logstash/logstash.conf'"
         ;;
-        2) echo "Trying to install 7.1"
+        2) echo "Trying to install 7.16.3"
         echo "Checking the previous versions on the EC2 instance"
         if [ -d "/etc/logstash" ]; then
         echo "[WARN]Logstash is already configured!!!.. Checking the version \n"
@@ -83,6 +83,7 @@ case $version in
         echo "Installing the 7.16.3 version..."
         sudo yum remove logstash -y >>$logfile 2>>$errorfile
         echo "Deletion of 6.8.3 completed, installing the new one"
+        sudo wget https://artifacts.elastic.co/downloads/logstash/logstash-oss-7.16.3-x86_64.rpm >>$logfile 2>>$errorfile
         sudo rpm -ivh logstash-oss-7.16.3-x86_64.rpm -y >>$logfile 2>>$errorfile
         echo "Installing the logstash-output-opensearch plugin"
         sudo /usr/share/logstash/bin/logstash-plugin  install --preserve logstash-output-opensearch >>$logfile 2>>$errorfile
@@ -91,6 +92,7 @@ case $version in
         echo "No action required from the script.. exiting.."
         exit 1
         fi
+        exit 1
         fi
         echo "No Previous Version found.. Installing the 7.16.3"
         sudo rpm -ivh logstash-oss-7.16.3-x86_64.rpm -y >>$logfile 2>>$errorfile
