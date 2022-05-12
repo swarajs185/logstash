@@ -139,17 +139,25 @@ uninstalllogstash(){
     if [ $ret = 2 ] 
     then
     echo "Uninstalling 6.8.23"
-    sudo yum remove logstash -y
+    sudo yum remove logstash -y >>$logfile 2>>$errorfile
     echo "cleaning up.."
     sudo rm -rf /etc/logstash
     sudo rm -rf /usr/share/logstash
+    checkversion
+    ret=$?
+    if [ $ret = 1 ] then
+    echo "Uninstallation complete"
     elif [ $ret = 3 ]  
     then
     echo "Uninstalling 7.16.3"
-    sudo rpm -e logstash-oss-7.16.3-1.x86_64
+    sudo rpm -e logstash-oss-7.16.3-1.x86_64 >>$logfile 2>>$errorfile
     echo "cleaning up.."
     sudo rm -rf /etc/logstash
-    sudo rm -rf /usr/share/logstash   
+    sudo rm -rf /usr/share/logstash
+    checkversion
+    ret=$?
+    if [ $ret = 1 ] then
+    echo "Uninstallation complete"   
     else
     echo "Nothing to Uninstall.."   
     fi
