@@ -191,7 +191,6 @@ case $version in
         1) installingsixversion;;
         2) installingsevenversion;;
         3) uninstalllogstash;;
-        *) echo default
-        echo "Not Found will be updating the script soon..."
+        *) echo "Invalid Input"
         ;;
 esac
