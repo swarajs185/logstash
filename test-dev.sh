@@ -68,8 +68,12 @@ installingsixversion(){
         echo "[SUCCESS]Installation Complete.. Please create a pipeline on '/etc/logstash/logstash.conf' and run 'sudo /usr/share/logstash/bin/logstash -f /etc/logstash/logstash.conf'"
         exit 1
     else
-        echo " Logstash already configured.. current version installed : $ret"
-        exit 1
+       if [ $ret = 2 ] 
+       then
+           echo "You already have 6.8.23 version installed..."
+        else
+            echo "You already have 7.16.3 version installed..."
+       fi
     fi
 }
 
