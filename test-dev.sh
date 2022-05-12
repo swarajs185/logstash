@@ -116,6 +116,7 @@ installingsevenversion(){
 
 checkversion(){
     if [ -d /usr/share/logstash/bin ] then
+
     echo "[WARN]Logstash is already configured!!!.. Checking the version \n"
     sleep 1
 
@@ -128,11 +129,10 @@ checkversion(){
     then
     return 6.8.23
     fi
-
-    else
-        return 1
     fi
+    return 1
 }
+
 
 uninstalllogstash(){
     checkversion
