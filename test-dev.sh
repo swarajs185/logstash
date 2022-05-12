@@ -24,7 +24,7 @@ echo "Log file: $logfile"
 echo -e "Error file: $errorfile \n "
 
 installingjava(){
-    if [ -d "/usr/lib/java" ]; then
+    if [ -d "/usr/lib/java-1.8.0" ]; then
         echo -e "Java 1.8 is already installed \n"
         sleep 1
 else
