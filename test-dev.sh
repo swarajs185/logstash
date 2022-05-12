@@ -1,7 +1,6 @@
 cat << EOT
 =================================================================================================
-Hey! This script is trying to install logstash on your EC2 instance! 
-Happy Cloud computing!!!
+LOGSTASH INSTALLER!!! 
 dev:sswraj@
 ==================================================================================================
 EOT
@@ -26,15 +25,15 @@ echo -e "Error file: $errorfile \n "
 
 installingjava(){
     if [ -d "/usr/lib/java" ]; then
-        echo -e "[INFO]Java 1.8 is already installed \n"
+        echo -e "Java 1.8 is already installed \n"
         sleep 1
 else
         echo -e "Installing java 1.8... \n"
         sudo yum install java-1.8.0-openjdk.x86_64 -y > $logfile 2>> $errorfile
         if [ -s $errorfile ]; then
-                echo -e "[SUCCESS]Installed successfully \n"
+                echo -e "Installed successfully \n"
         else
-                echo "[ERROR]Installation failed with errors:"
+                echo "Installation failed with errors:"
                 echo "check the errorfile for more details on $errorfile"
                 exit 1
         fi
@@ -51,35 +50,35 @@ installingsixversion(){
         echo -e "Configuring and Installing Dependencies... \n"
         sudo wget https://artifacts.elastic.co/GPG-KEY-elasticsearch >> $logfile 2>> $errorfile
         sleep 1
-        echo "[INFO]Dependencies downloaded!! ...Searching for logstash repo"
+        echo "Dependencies downloaded!! ...Searching for logstash repo"
         if [ -e $repository ]; then
-        echo -e "[INFO]Logstash repository found!!! \n"
+        echo -e "Logstash repository found!!! \n"
         else
-        echo -e "[WARN]:LOGSTASH Config file not found ........ Create a logstash.repo under /etc/yum.repos.d/ \n"
+        echo -e "LOGSTASH Config file not found ........ Create a logstash.repo under /etc/yum.repos.d/ \n"
         sudo yum install logstash >> $errorfile 2>> $errorfile
-        echo "[INFO]check $errorfile for more details"
+        echo "check $errorfile for more details"
         exit 1
         fi
-        echo -e "[INFO]Installing Logstash \n "
+        echo -e "Installing Logstash \n "
         sudo yum install logstash -y >> $logfile 2>> $errorfile
         sudo usermod -a -G logstash ec2-user
-        echo -e "[INFO]Installing amazon-es plugin \n"
+        echo -e "Installing amazon-es plugin \n"
         sudo /usr/share/logstash/bin/logstash-plugin install logstash-output-amazon_es >>$logfile 2>>$errorfile
-        echo "[SUCCESS]Installation Complete.. Please create a pipeline on '/etc/logstash/logstash.conf' and run 'sudo /usr/share/logstash/bin/logstash -f /etc/logstash/logstash.conf'"
+        echo "Installation Complete.. Please create a pipeline on '/etc/logstash/logstash.conf' and run 'sudo /usr/share/logstash/bin/logstash -f /etc/logstash/logstash.conf'"
         exit 1
     else
        if [ $ret = 2 ] 
        then
            echo "You already have 6.8.23 version installed..."
         else
-            echo "You already have 7.16.3 version installed..."
+           echo "You already have latest version 7.16.3 version installed..."
        fi
     fi
 }
 
 installingsevenversion(){
-    echo "Trying to install 7.16.3"
-    echo "Checking the previous versions on the EC2 instance"
+    echo "Trying to install 7.16.3..."
+    echo "Checking the previous versions on the EC2 instance..."
     checkversion
     ret=$?
     if [ $ret = 3 ] 
@@ -89,7 +88,7 @@ installingsevenversion(){
     elif [ $ret = 2 ]
     then
         echo "Current version: 6.8.23"
-        echo -e "Would you like to upgrade to 7.16.3? [yes/no] \n"
+        echo "Would you like to upgrade to 7.16.3? [yes/no]:"
         read option
         if [ $option = "yes" ] 
         then
@@ -177,12 +176,13 @@ uninstalllogstash(){
 
 cat << EOT
 =================================================================================================
-Please enter which version yoou would like to install!
+Please enter which version you would like to install!
 1. 6.8.3
 2. 7.16.3 (As a Service)
 3. Uninstall Logstash
 ==================================================================================================
 EOT
+echo "Please Enter your choice [1/2/3]: "
 read version
 
 case $version in
