@@ -26,7 +26,7 @@ echo -e "Error file: $errorfile \n "
 installingjava(){
     if [ -d "/usr/lib/java-1.8.0" ]; then
         echo -e "Java binaries are installing.. In case java is already installed. process will be ignored"
-        sudo yum install java-1.8.0-openjdk.x86_64 -y >>$logfile
+        sudo yum install java-1.8.0-openjdk.x86_64 -y >>$logfile 2>> $errorfile
         sleep 1
 else
         echo -e "Installing java 1.8... \n"
