@@ -120,9 +120,8 @@ checkversion(){
     if [ `/usr/share/logstash/bin/logstash --version | cut -d " " -f 2 | sed -n '2p'` = "7.16.3" ]
     then
         return 3
-    fi
 
-    if [ `/usr/share/logstash/bin/logstash --version | cut -d " " -f 2` = "6.8.23" ] 
+    elif [ `/usr/share/logstash/bin/logstash --version | cut -d " " -f 2` = "6.8.23" ] 
     then
         return 2
     fi
@@ -158,7 +157,7 @@ uninstalllogstash(){
     sudo rm -rf /usr/share/logstash
     checkversion
     ret=$?
-    if [ $ret = 1] 
+    if [ $ret = 1 ] 
     then
     echo "Uninstallation Complete..."
     fi
