@@ -146,7 +146,7 @@ uninstalllogstash(){
     checkversion
     ret=$?
     if [ $ret = 1 ] then
-    echo "Uninstallation complete"
+    echo "Uninstallation complete..."
     fi
     elif [ $ret = 3 ]  
     then
@@ -158,7 +158,8 @@ uninstalllogstash(){
     checkversion
     ret=$?
     if [ $ret = 1 ] then
-    echo "Uninstallation complete"   
+    echo "Uninstallation complete" 
+    fi  
     else
     echo "Nothing to Uninstall.."   
     fi
