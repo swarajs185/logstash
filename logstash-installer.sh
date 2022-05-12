@@ -139,6 +139,20 @@ checkversion(){
     fi
 }
 
+outversion(){
+    checkversion
+    ret=$?
+    if [ $ret = 3 ] 
+    then
+        echo "Current Version: 7.16.3"
+    elif [ $ret = 2 ]
+    then
+        echo "Current Version: 6.8.23"
+    else
+        echo "Logstash Not Installed"
+    fi
+}
+
 
 uninstalllogstash(){
     checkversion
