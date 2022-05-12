@@ -145,8 +145,9 @@ uninstalllogstash(){
     sudo rm -rf /usr/share/logstash
     checkversion
     ret=$?
-    if [ $ret = 1 ] then
-    echo "Uninstallation complete..."
+    if [ $ret = 1 ]
+    then
+    echo "Uninstallation complete.."    
     fi
     elif [ $ret = 3 ]  
     then
