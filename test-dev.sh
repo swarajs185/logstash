@@ -147,6 +147,7 @@ uninstalllogstash(){
     ret=$?
     if [ $ret = 1 ] then
     echo "Uninstallation complete"
+    fi
     elif [ $ret = 3 ]  
     then
     echo "Uninstalling 7.16.3"
