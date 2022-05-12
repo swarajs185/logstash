@@ -118,9 +118,8 @@ sevenversioninstall(){
     echo "installing binaries"
     sudo rpm -ivh logstash-oss-7.16.3-x86_64.rpm >>$logfile 2>>$errorfile
     echo "Installing the logstash-output-opensearch plugin"
-    sudo /usr/share/logstash/bin/logstash-plugin  install --preserve logstash-output-opensearch
+    sudo /usr/share/logstash/bin/logstash-plugin  install --preserve logstash-output-opensearch 2>>$errorfile
     echo "Installed the plugin" >>$logfile
-    echo "Installation Successful"
 }
 
 checkversion(){
@@ -191,6 +190,6 @@ case $version in
         1) installingsixversion;;
         2) installingsevenversion;;
         3) uninstalllogstash;;
-        *) echo "Invalid Input"
+        *) echo "Invalid Input.. Exiting the script"
         ;;
 esac
