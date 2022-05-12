@@ -125,7 +125,6 @@ checkversion(){
     elif [ `/usr/share/logstash/bin/logstash --version | cut -d " " -f 2` = "6.8.23" ] 
     then
         return 6.8.23
-    fi
     else
         return 1
     fi
