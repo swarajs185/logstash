@@ -45,7 +45,7 @@ installingjava
 installingsixversion(){
     checkversion
     ret=$?
-    if [ $ret = "1" ] 
+    if [ $ret = 1 ] 
     then
         echo "Installing logstash 6.8 version"
         echo -e "Configuring and Installing Dependencies... \n"
@@ -78,13 +78,13 @@ installingsevenversion(){
     echo "Checking the previous versions on the EC2 instance"
     checkversion
     ret=$?
-    if [ $ret = "7.16.3"] 
+    if [ $ret = 3 ] 
     then
         echo "You are already having the latest version: $ret"
         exit 1
-    elif [ $ret = "6.8.23"]
+    elif [ $ret = 2 ]
     then
-        echo "Current version: $ret"
+        echo "Current version: 6.8.23"
         echo -e "Would you like to upgrade to 7.16.3? [yes/no] \n"
         read option
         if [ $option = "yes" ] 
@@ -119,16 +119,16 @@ checkversion(){
     then
     if [ `/usr/share/logstash/bin/logstash --version | cut -d " " -f 2 | sed -n '2p'` = "7.16.3" ]
     then
-        return "7.16.3"
+        return 3
     fi
 
     if [ `/usr/share/logstash/bin/logstash --version | cut -d " " -f 2` = "6.8.23" ] 
     then
-        return "6.8.23"
+        return 2
     fi
 
     else
-        return "1"
+        return 1
     fi
 }
 
@@ -136,16 +136,16 @@ checkversion(){
 uninstalllogstash(){
     checkversion
     ret=$?
-    if [ $ret = "6.8.23" ] 
+    if [ $ret = 2 ] 
     then
     echo "Uninstalling 6.8.23"
     sudo yum remove logstash -y
     echo "cleaning up.."
     sudo rm -rf /etc/logstash
     sudo rm -rf /usr/share/logstash
-    elif [ $ret = "7.16.3" ]  
+    elif [ $ret = 3 ]  
     then
-    echo "Uninstalling $ret"
+    echo "Uninstalling 7.16.3"
     sudo rpm -e logstash-oss-7.16.3-1.x86_64
     echo "cleaning up.."
     sudo rm -rf /etc/logstash
