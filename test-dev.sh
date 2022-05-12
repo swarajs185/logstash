@@ -115,11 +115,8 @@ installingsevenversion(){
 }
 
 checkversion(){
-    if [ -d /usr/share/logstash/bin ] then
-
-    echo "[WARN]Logstash is already configured!!!.. Checking the version \n"
-    sleep 1
-
+    if [ -d /usr/share/logstash/bin ] 
+    then
     if [ `/usr/share/logstash/bin/logstash --version | cut -d " " -f 2 | sed -n '2p'` = "7.16.3" ]
     then
         return 7.16.3
@@ -127,10 +124,12 @@ checkversion(){
 
     if [ `/usr/share/logstash/bin/logstash --version | cut -d " " -f 2` = "6.8.23" ] 
     then
-    return 6.8.23
+        return 6.8.23
     fi
+
+    else
+        return 1
     fi
-    return 1
 }
 
 
