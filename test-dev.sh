@@ -80,7 +80,7 @@ installingsevenversion(){
     ret=$?
     if [ $ret = 3 ] 
     then
-        echo "You are already having the latest version: $ret"
+        echo "You are already having the latest version: 7.16.3"
         exit 1
     elif [ $ret = 2 ]
     then
@@ -108,10 +108,11 @@ sevenversioninstall(){
     echo "Installing the 7.16.3 version..."
     if [ ! -e ./logstash-oss-7.16.3-x86_64.rpm ] 
     then
-    echo "Installing Artifacts and binaries"
+    echo "Installing Artifacts"
     sudo wget https://artifacts.elastic.co/downloads/logstash/logstash-oss-7.16.3-x86_64.rpm >>$logfile 2>>$errorfile
-    sudo rpm -ivh logstash-oss-7.16.3-x86_64.rpm >>$logfile 2>>$errorfile
     fi
+    echo "installing binaries"
+    sudo rpm -ivh logstash-oss-7.16.3-x86_64.rpm >>$logfile 2>>$errorfile
     echo "Installing the logstash-output-opensearch plugin"
     sudo /usr/share/logstash/bin/logstash-plugin  install --preserve logstash-output-opensearch >>$logfile 2>>$errorfile
     echo "Installation Successful"
