@@ -195,6 +195,7 @@ Please enter which version you would like to install!
 1. 6.8.3
 2. 7.16.3 (As a Service)
 3. Uninstall Logstash
+4. Check Logstash Version
 ==================================================================================================
 EOT
 echo "Please Enter your choice [1/2/3]: "
@@ -204,6 +205,7 @@ case $version in
         1) installingsixversion;;
         2) installingsevenversion;;
         3) uninstalllogstash;;
+        4) outversion;;
         *) echo "Invalid Input.. Exiting the script"
         ;;
 esac
