@@ -198,7 +198,7 @@ Please enter which version you would like to install!
 4. Check Logstash Version
 ==================================================================================================
 EOT
-echo "Please Enter your choice [1/2/3]: "
+echo "Please Enter your choice [1/2/3/4]: "
 read version
 
 case $version in
