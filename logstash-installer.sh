@@ -215,15 +215,22 @@ copyconffile(){
 
 
 cat << EOT
+
+Versions available:
 =================================================================================================
-Please enter which version you would like to install!
 1. 6.8.3
 2. 7.16.3 (As a Service)
+==================================================================================================
+
+Operations available after installing the logstash:
+==================================================================================================
 3. Uninstall Logstash
 4. Check Logstash Version
-5. Copy the logstash .conf file and start the logstash 
+5. Start Logstash service(Make sure you have configured the .conf file before running)
 ==================================================================================================
+
 EOT
+
 echo "Please Enter your choice [1/2/3/4/5]: "
 read version
 
