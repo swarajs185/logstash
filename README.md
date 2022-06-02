@@ -7,15 +7,15 @@ This script used to install the logstash on EC2 instance
 
 Once you have cloned the repository, please move to the ```logstash``` directory
 
-```cd logstash/```
+````cd logstash/````
 
 Once you move to the directory, You need to provide the full access to the logstash-installer.sh script
 
-```chmod 777 logstash-installer.sh```
+````chmod 777 logstash-installer.sh````
 
 Now you can execute the script by running the below command
 
-```./logstash-installer.sh```
+````./logstash-installer.sh````
 
 In this script, You can install 2 different version of Logstash with this script in Amazon Linux EC2 instance.
 
