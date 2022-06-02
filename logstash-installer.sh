@@ -191,7 +191,7 @@ uninstalllogstash(){
 copyconffile(){
     echo -e "Please enter the absolute path you have stored the logstash configuration file: "
     read path_conf
-    checkversion()
+    checkversion
     ret=$?
     if [ $ret = 3 ] 
     then
