@@ -201,15 +201,16 @@ copyconffile(){
     sudo systemctl start logstash 
     echo "Started the logstash service, Please check the log at /var/log/logstash/logstash-plain.log"
     fi
-    elif [ $ret = 2 ] 
+    if [ $ret = 2 ] 
     then
     echo "Detected version 6.8.. Copying the file to /etc/logstash/conf.d/logstash.conf"
     sudo cp $path_conf /etc/logstash/conf.d/logstash.conf
     echo "Starting the Logstash service..."
     sudo /usr/share/logstash/bin/logstash --path.settings /etc/logstash/ -f /etc/logstash/conf.d/logstash.conf
-    else
+    fi
+    if [ $ret = 1 ]
+    then
     echo "no version detected.. exiting.."
-    exit 1
     fi
 }
 
