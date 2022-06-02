@@ -225,7 +225,7 @@ Please enter which version you would like to install!
 5. Copy the logstash .conf file and start the logstash 
 ==================================================================================================
 EOT
-echo "Please Enter your choice [1/2/3/4]: "
+echo "Please Enter your choice [1/2/3/4/5]: "
 read version
 
 case $version in
