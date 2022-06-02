@@ -189,10 +189,15 @@ uninstalllogstash(){
 }
 
 copyconffile(){
-    echo -e "Please enter the absolute path you have stored the logstash configuration file: "
-    read path_conf
     checkversion
     ret=$?
+    if [ $ret = 1 ]
+    then
+    echo "no version detected.. exiting.."
+    exit 1
+    fi
+    echo -e "Please enter the absolute path you have stored the logstash configuration file: "
+    read path_conf
     if [ $ret = 3 ] 
     then
     echo "Detected version 7.16.3.. Copying the file to /etc/logstash/conf.d/logstash.conf" 
@@ -207,10 +212,6 @@ copyconffile(){
     sudo cp $path_conf /etc/logstash/conf.d/logstash.conf
     echo "Starting the Logstash service..."
     sudo /usr/share/logstash/bin/logstash --path.settings /etc/logstash/ -f /etc/logstash/conf.d/logstash.conf
-    fi
-    if [ $ret = 1 ]
-    then
-    echo "no version detected.. exiting.."
     fi
 }
 
