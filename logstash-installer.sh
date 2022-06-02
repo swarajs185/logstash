@@ -14,7 +14,7 @@ fi
 if [ ! -d "$home/apperror" ]; then #creating the error folder for the first name
         mkdir -p $home/apperror
 fi
-date_log=`date  | cut -d " " -f 4 | sed -e "s/:/_/g"`
+date_log=`date  | cut -d " " -f 5 | sed -e "s/:/_/g"`
 logfile=$home/applog/logfile_$date_log.log
 errorfile=$home/apperror/errorfile_$date_log.log
 #echo $logfile
