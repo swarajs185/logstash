@@ -195,21 +195,21 @@ copyconffile(){
     ret=$?
     if [ $ret = 3 ] 
     then
-        echo "Detected version 7.16.3.. Copying the file to /etc/logstash/conf.d/logstash.conf" 
-        sudo cp $path_conf /etc/logstash/conf.d/logstash.conf
-        echo "Starting the Logstash service"
-        sudo systemctl start logstash 
-        echo "Started the logstash service, Please check the log at /var/log/logstash/logstash-plain.log"
+    echo "Detected version 7.16.3.. Copying the file to /etc/logstash/conf.d/logstash.conf" 
+    sudo cp $path_conf /etc/logstash/conf.d/logstash.conf
+    echo "Starting the Logstash service"
+    sudo systemctl start logstash 
+    echo "Started the logstash service, Please check the log at /var/log/logstash/logstash-plain.log"
     fi
     elif [ $ret = 2 ] 
     then
-        echo "Detected version 6.8.. Copying the file to /etc/logstash/conf.d/logstash.conf"
-        sudo cp $path_conf /etc/logstash/conf.d/logstash.conf
-        echo "Starting the Logstash service..."
-        sudo /usr/share/logstash/bin/logstash --path.settings /etc/logstash/ -f /etc/logstash/conf.d/logstash.conf
+    echo "Detected version 6.8.. Copying the file to /etc/logstash/conf.d/logstash.conf"
+    sudo cp $path_conf /etc/logstash/conf.d/logstash.conf
+    echo "Starting the Logstash service..."
+    sudo /usr/share/logstash/bin/logstash --path.settings /etc/logstash/ -f /etc/logstash/conf.d/logstash.conf
     else
-        echo "no version detected.. exiting.."
-        exit 1
+    echo "no version detected.. exiting.."
+    exit 1
     fi
 }
 
