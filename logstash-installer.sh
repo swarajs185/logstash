@@ -188,6 +188,30 @@ uninstalllogstash(){
     fi
 }
 
+copyconffile(){
+    echo -e "Please enter the absolute path you have stored the logstash configuration file: "
+    read path_conf
+    checkversion()
+    ret=$?
+    if [ $ret = 3 ] 
+    then
+        echo "Detected version 7.16.3.. Copying the file to /etc/logstash/conf.d/logstash.conf" 
+        sudo cp $path_conf /etc/logstash/conf.d/logstash.conf
+        echo "Starting the Logstash service"
+        sudo systemctl start logstash 
+        echo "Started the logstash service, Please check the log at /var/log/logstash/logstash-plain.log"
+    fi
+    elif [ $ret = 2 ] 
+    then
+        echo "Detected version 6.8.. Copying the file to /etc/logstash/conf.d/logstash.conf"
+        sudo cp $path_conf /etc/logstash/conf.d/logstash.conf
+        echo "Starting the Logstash service..."
+        sudo /usr/share/logstash/bin/logstash --path.settings /etc/logstash/ -f /etc/logstash/conf.d/logstash.conf
+    else
+        echo "no version detected.. exiting.."
+        exit 1
+}
+
 
 cat << EOT
 =================================================================================================
@@ -196,6 +220,7 @@ Please enter which version you would like to install!
 2. 7.16.3 (As a Service)
 3. Uninstall Logstash
 4. Check Logstash Version
+5. Copy the logstash .conf file and start the logstash 
 ==================================================================================================
 EOT
 echo "Please Enter your choice [1/2/3/4]: "
@@ -206,6 +231,7 @@ case $version in
         2) installingsevenversion;;
         3) uninstalllogstash;;
         4) outversion;;
+        5) copyconffile;;
         *) echo "Invalid Input.. Exiting the script"
         ;;
 esac
