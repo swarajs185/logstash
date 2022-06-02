@@ -210,6 +210,7 @@ copyconffile(){
     else
         echo "no version detected.. exiting.."
         exit 1
+    fi
 }
 
 
