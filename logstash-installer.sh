@@ -40,6 +40,23 @@ else
 fi
 }
 
+checkversion(){
+    if [ -d /usr/share/logstash/bin ] 
+    then
+    if [ "`/usr/share/logstash/bin/logstash --version | cut -d " " -f 2 | sed -n '2p'`" = "7.16.3" ]
+    then
+        return 3
+
+    elif [ "`/usr/share/logstash/bin/logstash --version | cut -d " " -f 2`" = "6.8.23" ] 
+    then
+        return 2
+    fi
+
+    else
+        return 1
+    fi
+}
+
 checkversion
 ret=$?
 if [ $ret = 1 ] 
@@ -127,22 +144,6 @@ sevenversioninstall(){
     echo "Installed the plugin" >>$logfile
 }
 
-checkversion(){
-    if [ -d /usr/share/logstash/bin ] 
-    then
-    if [ "`/usr/share/logstash/bin/logstash --version | cut -d " " -f 2 | sed -n '2p'`" = "7.16.3" ]
-    then
-        return 3
-
-    elif [ "`/usr/share/logstash/bin/logstash --version | cut -d " " -f 2`" = "6.8.23" ] 
-    then
-        return 2
-    fi
-
-    else
-        return 1
-    fi
-}
 
 outversion(){
     checkversion
