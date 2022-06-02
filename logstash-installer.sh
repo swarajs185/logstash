@@ -39,7 +39,13 @@ else
         fi
 fi
 }
-installingjava
+
+checkversion
+ret=$?
+if [ $ret = 1] 
+then
+    installingjava    
+fi
 
 installingsixversion(){
     checkversion
@@ -214,20 +220,17 @@ copyconffile(){
 
 
 cat << EOT
-
 Versions available:
 =================================================================================================
 1. 6.8.23
 2. 7.16.3 (As a Service)
 ==================================================================================================
-
 Operations available after installing the logstash:
 ==================================================================================================
 3. Uninstall Logstash
 4. Check Logstash Version
 5. Start Logstash service(Make sure you have configured the .conf file before running)
 ==================================================================================================
-
 EOT
 
 echo "Please Enter your choice [1/2/3/4/5]: "
