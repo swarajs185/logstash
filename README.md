@@ -43,7 +43,7 @@ In order to install the Logstash service
 
 ````./logstash-installer.sh -i```` or ````./logstash-installer.sh --install````
 
-In order to perform the operations like, Uninstalling the logstash, checking the version and start the logstash service according to the version you have installed.
+In order to perform the operations like, Uninstalling the logstash, Upgrading the logstash and start,stop,restart the logstash service according to the version you have installed.
 
 ````./logstash-installer.sh -o```` or ````./logstash-installer.sh --operations````
 
