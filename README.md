@@ -25,7 +25,7 @@ Operations available after installing the logstash:
 
 # Usage
 
-Once you have cloned the repository, please move to the ```logstash``` directory
+Once you have cloned the repository, please move to the ```logstash_installer``` directory
 
 ````cd logstash_installer/````
 
@@ -54,7 +54,7 @@ In order to check the current logstash version installed
 
 # NOTE:
 
-Please note that, before starting the logstash service, you need to configure the ```logstash.conf``` file present in the ```logstash``` folder.
+Please note that, before starting the logstash service, you need to configure the ```logstash.conf``` file present in the ```logstash_installer``` folder.
 
 For sample ```logstash.conf```, you can refer below 
 
