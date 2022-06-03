@@ -189,7 +189,7 @@ copyconffile(){
     sudo cp ./logstash.conf /etc/logstash/conf.d/logstash.conf
     echo "Starting the Logstash service"
     sudo systemctl start logstash 
-    echo "Started the logstash service, Please check the log at /var/log/logstash/logstash-plain.log"
+    echo "Started the logstash service"
     fi
     if [ $ret = 2 ] 
     then
@@ -298,12 +298,13 @@ Operations available for 7.16.3:
 2. Start Logstash service (Please configure logstash.conf file before starting logstash)
 3. Stop the logstash service 
 4. Restart the logstash service
+5. Check the logstash log
 
 Press any other key to abort the operation
 ==================================================================================================
 EOT
 
-echo "Please Enter your choice [1/2/3/4]":
+echo "Please Enter your choice [1/2/3/4/5]":
 read out
 
 case $out in
@@ -317,6 +318,8 @@ case $out in
     ;;
     4) echo "Restarting the logstash service"
     sudo systemctl restart logstash
+    ;;
+    5) tail -f /var/log/logstash/logstash-plain.log
     ;;
     *) echo "Invalid output"
        exit 1
