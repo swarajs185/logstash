@@ -4,27 +4,55 @@ This script used to install the logstash on EC2 instance
 
 Logstash information: https://wikitech.wikimedia.org/wiki/Logstash
 
+This script is to install logstash for Amazon Linux EC2 server
+
+Versions available to install using the script
+
+```
+1. 6.8.23
+2. 7.16.3 (As a Service)
+```
+
+Operations available after installing the logstash:
+
+```
+1. Uninstall Logstash
+2. Check Logstash Version
+3. Start Logstash service
+4. Stop the logstash service (Applicable for 7.16.3 version)
+5. Restart the logstash service  (Applicable for 7.16.3 version)
+```
 
 # Usage
 
 Once you have cloned the repository, please move to the ```logstash``` directory
 
-````cd logstash/````
+````cd logstash_installer/````
 
 Once you move to the directory, You need to provide the full access to the logstash-installer.sh script
 
-````chmod 777 logstash-installer.sh````
+````chmod u+x logstash-installer.sh````
 
-Now you can execute the script by running the below command
+# Script Usage
 
-````./logstash-installer.sh````
+To find the HelpMe Window
 
-In this script, You can install 2 different version of Logstash with this script in Amazon Linux EC2 instance.
+````./logstash-installer.sh -h```` or ````./logstash-installer.sh --helpme````
 
-1. 6.8.23 which is compatible with older versions of Elasticsearch.
-2. 7.16.3 which is compatible with newer builds of Opensearch.
+In order to install the Logstash service
 
-Other than that you can also do the operations like, Uninstalling the logstash, checking the version and start the logstash service according to the version you have installed.
+````./logstash-installer.sh -i```` or ````./logstash-installer.sh --install````
+
+In order to perform the operations like, Uninstalling the logstash, checking the version and start the logstash service according to the version you have installed.
+
+````./logstash-installer.sh -o```` or ````./logstash-installer.sh --operations````
+
+In order to check the current logstash version installed
+
+````./logstash-installer.sh -c```` or ````./logstash-installer.sh --check-version````
+
+
+# NOTE:
 
 Please note that, before starting the logstash service, you need to configure the ```logstash.conf``` file present in the ```logstash``` folder.
 
