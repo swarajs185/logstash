@@ -355,16 +355,16 @@ fi
 
 
 case $1 in
-    "--check-version") outversion
+    "--check-version" | "-c") outversion
     exit 1
     ;;
-    "--helpme") helpme
+    "--helpme" | "-h") helpme
     exit 1
     ;;
-    "--install") install
+    "--install" | "-i") install
     exit 1
     ;;
-    "--operations") 
+    "--operations" | "-o") 
     operations
     exit 1
     ;;
