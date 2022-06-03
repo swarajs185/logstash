@@ -2,6 +2,8 @@
 
 This script used to install the logstash on EC2 instance
 
+Logstash information: https://wikitech.wikimedia.org/wiki/Logstash
+
 
 # Usage
 
