@@ -245,6 +245,8 @@ Please select the version you would like to install
 
 1. 6.8.23
 2. 7.16.3 (As a Service)
+
+Press any other key to abort the operation
 ==================================================================================================
 EOT
 echo "Please enter your choice [1/2]: "
@@ -295,7 +297,9 @@ Operations available for 7.16.3:
 1. Uninstall Logstash
 2. Start Logstash service (Please configure logstash.conf file before starting logstash)
 3. Stop the logstash service 
-4. Restart the logstash service 
+4. Restart the logstash service
+
+Press any other key to abort the operation
 ==================================================================================================
 EOT
 
@@ -328,6 +332,8 @@ Operations available for 6.8.23:
 1. Uninstall Logstash
 2. Upgrade to 7.16.3
 3. Start the logstash service (Please configure logstash.conf file before starting logstash)
+
+Press any other key to abort the operation
 ==================================================================================================
 EOT
 
