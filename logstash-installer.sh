@@ -210,11 +210,11 @@ cat << EOT
 
 This script is to install logstash for Amazon Linux EC2 server
 
-Please run ./logstash-installer.sh --install for installing the logstash version
+Please run './logstash-installer.sh --install' or './logstash-installer.sh -i' for installing the logstash version
 
-please run ./logstash-installer.sh --operations to perform the operations
+please run './logstash-installer.sh --operations' or './logstash-installer.sh -o' to perform the operations
 
-Please run ./logstash-installer.sh --check-version to check the current version installed in EC2 instance
+Please run './logstash-installer.sh --check-version' or './logstash-installer.sh -c' to check the current version installed in EC2 instance
 
 Versions available to install using the script
 =================================================================================================
@@ -222,7 +222,7 @@ Versions available to install using the script
 2. 7.16.3 (As a Service)
 ==================================================================================================
 
-Operations available after installing the logstash:
+Operations available after installing the logstash(Version Dependent):
 ==================================================================================================
 1. Uninstall Logstash
 2. Check Logstash Version
@@ -319,7 +319,7 @@ case $out in
     4) echo "Restarting the logstash service"
     sudo systemctl restart logstash
     ;;
-    5) tail -f /var/log/logstash/logstash-plain.log
+    5) sudo tail -f /var/log/logstash/logstash-plain.log
     ;;
     *) echo "Invalid output"
        exit 1
