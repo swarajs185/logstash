@@ -7,7 +7,7 @@ rm -f GPG-KEY-elasticsearch* #removing the old key files
 
 installingjava(){
     if [ -d "/usr/lib/java-1.8.0" ]; then
-        echo -e "Java binaries are installing.. In case java is already installed. process will be ignored"
+        echo -e "\e[1;31m Java binaries are installing.. In case java is already installed. process will be ignored \e[0m"
         sudo yum install java-1.8.0-openjdk.x86_64 -y 
         sleep 1
 else
@@ -231,6 +231,7 @@ Operations available after installing the logstash(Version Dependent):
 5. Restart the logstash service  (Applicable for 7.16.3 version)
 ==================================================================================================
 EOT
+
 exit 1   
 }
 #################################Installation##########################################################
