@@ -64,7 +64,7 @@ installingsixversion(){
         sudo usermod -a -G logstash ec2-user
         echo -e "${info}Installing amazon-es plugin \n${nc}"
         sudo /usr/share/logstash/bin/logstash-plugin install logstash-output-amazon_es 
-        echo "${green}Installation Complete...${nc}"
+        echo -e "${green}Installation Complete...${nc}"
         exit 1
     else
        if [ $ret = 2 ] 
