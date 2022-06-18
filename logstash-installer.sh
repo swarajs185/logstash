@@ -6,9 +6,13 @@ home=~/logstash-installer/logs
 repository=/etc/yum.repos.d/logstash.repo
 rm -f GPG-KEY-elasticsearch* #removing the old key files
 
+red='\e[1;31m'
+green='\e[1;32m'
+nc='\e[0m'
+
 installingjava(){
     if [ -d "/usr/lib/java-1.8.0" ]; then
-        echo -e "\e[1;31m Java binaries are installing.. In case java is already installed. process will be ignored \e[0m"
+        echo -e "${red} Java binaries are installing.. In case java is already installed. process will be ignored ${nc}"
         sudo yum install java-1.8.0-openjdk.x86_64 -y 
         sleep 1
 else
@@ -46,7 +50,7 @@ installingsixversion(){
         sleep 1
         echo "Dependencies downloaded!! ...Searching for logstash repo"
         if [ -e $repository ]; then
-        echo -e "Logstash repository found!!! \n"
+        echo -e "${green}Logstash repository found!!! \n${nc}"
         else
         echo -e "LOGSTASH Config file not found ........ Create a logstash.repo under /etc/yum.repos.d/ \n"
         sudo yum install logstash 
