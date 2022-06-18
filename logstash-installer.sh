@@ -54,11 +54,12 @@ installingsixversion(){
         exit 1
         fi
         echo -e "Installing Logstash \n "
-        sudo yum install logstash -y 
+        sudo yum install logstash -y
+        echo -e "Changing the usergroup permission.."
         sudo usermod -a -G logstash ec2-user
         echo -e "Installing amazon-es plugin \n"
         sudo /usr/share/logstash/bin/logstash-plugin install logstash-output-amazon_es 
-        echo "Installation Complete...'"
+        echo "Installation Complete..."
         exit 1
     else
        if [ $ret = 2 ] 
