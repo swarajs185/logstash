@@ -3,6 +3,7 @@ cat << EOT
 EOT
 sudo cp logstash.repo /etc/yum.repos.d/
 home=~/logstash-installer/logs
+repository=/etc/yum.repos.d/logstash.repo
 rm -f GPG-KEY-elasticsearch* #removing the old key files
 
 installingjava(){
@@ -13,13 +14,6 @@ installingjava(){
 else
         echo -e "Installing java 1.8... \n"
         sudo yum install java-1.8.0-openjdk.x86_64 -y 
-        if [ -s $errorfile ]; then
-                echo -e "Installed successfully \n"
-        else
-                echo "Installation failed with errors:"
-                echo "check the errorfile for more details on errors"
-                exit 1
-        fi
 fi
 }
 
