@@ -8,6 +8,7 @@ rm -f GPG-KEY-elasticsearch* #removing the old key files
 
 red='\e[1;31m'
 green='\e[1;32m'
+info='\e[1;36m'
 nc='\e[0m'
 
 installingjava(){
@@ -52,18 +53,18 @@ installingsixversion(){
         if [ -e $repository ]; then
         echo -e "${green}Logstash repository found!!! \n${nc}"
         else
-        echo -e "LOGSTASH Config file not found ........ Create a logstash.repo under /etc/yum.repos.d/ \n"
+        echo -e "${red}LOGSTASH Config file not found ........ Create a logstash.repo under /etc/yum.repos.d/ \n${nc}"
         sudo yum install logstash 
         echo "check errors for more details"
         exit 1
         fi
-        echo -e "Installing Logstash \n "
+        echo -e "${info}Installing Logstash \n${nc} "
         sudo yum install logstash -y
-        echo -e "Changing the usergroup permission.."
+        echo -e "${info}Changing the usergroup permission..${nc}"
         sudo usermod -a -G logstash ec2-user
-        echo -e "Installing amazon-es plugin \n"
+        echo -e "${info}Installing amazon-es plugin \n${nc}"
         sudo /usr/share/logstash/bin/logstash-plugin install logstash-output-amazon_es 
-        echo "Installation Complete..."
+        echo "${green}Installation Complete...${nc}"
         exit 1
     else
        if [ $ret = 2 ] 
